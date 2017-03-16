@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.ui.theme" value="simple" />
+	<!-- <constant name="struts.action.extension" value="action" /> -->
+	
+	
+	
+	<!-- 导入struts配置文件 -->
+	<!-- <include file="com/aiden/test/conf/test-struts.xml"></include> -->
+	<package name="post-action"  extends="struts-default">
+		<action name="post_*" class="cn.andone.action.PostAction" method="{1}">
+			<result name="frontList">/WEB-INF/jsp/frontList.jsp</result>
+			<result name="list" type="redirectAction">
+				<param name="actionName">user_listUI</param>
+				<param name="user.name">${strName}</param>
+				<param name="encode">true</param>
+			</result>
+			
+		</action>
+	</package>
+	<!-- 配置全局结果及异常映射 -->
+	
+	
+</struts>
